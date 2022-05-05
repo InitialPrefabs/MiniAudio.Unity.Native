@@ -16,6 +16,7 @@ void InitializeEngine() {
 		return;
 	}
 	engine = new AudioEngine();
+	safe_debug_log("Successfully initialized AudioEngine.");
 }
 
 bool inline IsEngineInitialized() {
