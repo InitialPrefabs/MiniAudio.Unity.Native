@@ -34,13 +34,23 @@ uint32_t LoadSound(const wchar_t* path, SoundLoadParameters loadParams) {
 	return engine->request_sound(path, loadParams);
 }
 
-uint32_t UnsafeLoadSound(const wchar_t* path, uint32_t size, void* loadParameters) {
+uint32_t UnsafeLoadSound(const wchar_t* path, uint32_t size, SoundLoadParameters* loadParams) {
+#ifndef DNDDEBUG
+	if (path == nullptr || loadParams == nullptr) {
+		return UINT32_MAX;
+	}
+#endif
+
 	std::wstringstream buffer;
 	buffer.write(path, size);
 	std::wstring wide_path = buffer.str();
 
-	SoundLoadParameters* load_params = (SoundLoadParameters*)loadParameters;
+	SoundLoadParameters* load_params = (SoundLoadParameters*)loadParams;
 	return engine->request_sound(wide_path.c_str(), *load_params);
+}
+
+void UnloadSound(uint32_t handle) {
+	engine->release_sound(handle);
 }
 
 void PlaySound(uint32_t handle) {

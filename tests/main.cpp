@@ -20,6 +20,12 @@ TEST_CASE("Initializing the audio engine using an ASCII path.") {
 	CHECK(valid_handle == 0);
 	CHECK(engine.free_sound_count() == 0);
 
+#ifndef DNDDEBUG
+	CHECK(UINT32_MAX == UnsafeLoadSound(t.c_str(), t.length(), nullptr));
+	CHECK(UINT32_MAX == UnsafeLoadSound(nullptr, t.length(), nullptr));
+	CHECK(UINT32_MAX == UnsafeLoadSound(nullptr, t.length(), nullptr));
+#endif
+
 	uint32_t invalid_handle = engine.request_sound(L"aksjdlask", default_params);
 	CHECK(invalid_handle == UINT32_MAX);
 	CHECK(engine.free_sound_count() == 1);
