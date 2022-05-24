@@ -9,3 +9,5 @@ set(CMAKE_CXX_STANDARD 17)
 add_library(MiniAudio_Unity_Bindings SHARED src/debug.cpp headers/audio.h src/audio.cpp src/miniaudio.c)
 
 add_executable(tests tests/main.cpp src/audio.cpp headers/audio.h headers/debug.h src/debug.cpp src/miniaudio.c)
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../Assets/MiniAudio.Unity/Plugins)
