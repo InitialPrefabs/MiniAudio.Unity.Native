@@ -2,11 +2,11 @@
 
 // The following function pointers should not be externed.
 // You should call safe_debug_log and variants instead.
-static log_info_ptr debug_log;
-static log_warn_ptr debug_warn;
-static log_error_ptr debug_error;
+static debug_ptr debug_log;
+static debug_ptr debug_warn;
+static debug_ptr debug_error;
 
-void InitializeLogger(log_info_ptr log_ptr, log_warn_ptr warn_ptr, log_error_ptr error_ptr) {
+void InitializeLogger(debug_ptr log_ptr, debug_ptr warn_ptr, debug_ptr error_ptr) {
 	if (debug_log == nullptr) {
 		debug_log = log_ptr;
 	}

@@ -31,7 +31,7 @@ MINIAUDIO_API void PlaySound(uint32_t handle);
 MINIAUDIO_API void StopSound(uint32_t handle, bool rewind);
 MINIAUDIO_API void SetSoundVolume(uint32_t handle, float volume);
 MINIAUDIO_API bool IsSoundPlaying(uint32_t handle);
-MINIAUDIO_API bool IsSoundFinished(uint32_t);
+MINIAUDIO_API bool IsSoundFinished(uint32_t handle);
 MINIAUDIO_API void ReleaseEngine();
 }
 
